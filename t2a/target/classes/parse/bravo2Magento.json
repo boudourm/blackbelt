@@ -1,0 +1,2759 @@
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 27 Jul 2020 15:42:10 GMT
+
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Api Documentation",
+		"version": "1.0",
+		"title": "Api Documentation",
+		"termsOfService": "urn:tos",
+		"contact": {
+			
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	},
+	"host": "172.17.3.13:9180",
+	"basePath": "/bravo2magento",
+	"tags": [
+		{
+			"name": "agence-controller",
+			"description": "Agence Controller"
+		},
+		{
+			"name": "basic-error-controller",
+			"description": "Basic Error Controller"
+		},
+		{
+			"name": "client-controller",
+			"description": "Client Controller"
+		},
+		{
+			"name": "customer-controller",
+			"description": "Customer Controller"
+		},
+		{
+			"name": "edition-controller",
+			"description": "Edition Controller"
+		},
+		{
+			"name": "operation-handler",
+			"description": "Operation Handler"
+		},
+		{
+			"name": "produit-controller",
+			"description": "Produit Controller"
+		},
+		{
+			"name": "web-mvc-endpoint-handler-mapping",
+			"description": "Web Mvc Endpoint Handler Mapping"
+		}
+	],
+	"paths": {
+		"/actuator": {
+			"get": {
+				"tags": [
+					"web-mvc-endpoint-handler-mapping"
+				],
+				"summary": "links",
+				"operationId": "linksUsingGET",
+				"produces": [
+					"application/json",
+					"application/vnd.spring-boot.actuator.v2+json"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "object",
+								"additionalProperties": {
+									"$ref": "#/definitions/Link"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/actuator/health": {
+			"get": {
+				"tags": [
+					"operation-handler"
+				],
+				"summary": "handle",
+				"operationId": "handleUsingGET",
+				"produces": [
+					"application/json",
+					"application/vnd.spring-boot.actuator.v2+json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "body",
+						"required": false,
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/actuator/info": {
+			"get": {
+				"tags": [
+					"operation-handler"
+				],
+				"summary": "handle",
+				"operationId": "handleUsingGET_1",
+				"produces": [
+					"application/json",
+					"application/vnd.spring-boot.actuator.v2+json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "body",
+						"required": false,
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/agence/{codeAgence}/stock": {
+			"post": {
+				"tags": [
+					"agence-controller"
+				],
+				"summary": "getStocks",
+				"operationId": "getStocksUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "path",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"in": "body",
+						"name": "stockRequest",
+						"description": "stockRequest",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/StockParams"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/StockProduitLightDto"
+							}
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client": {
+			"post": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "creerClientMagento",
+				"operationId": "creerClientMagentoUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "clientMagento",
+						"description": "clientMagento",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ClientDto"
+						}
+					},
+					{
+						"name": "customerIdMagento",
+						"in": "query",
+						"description": "customerIdMagento",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created",
+						"schema": {
+							"$ref": "#/definitions/ClientDto"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/import": {
+			"post": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getimportClientMagento",
+				"operationId": "getimportClientMagentoUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "customerIdMagento",
+						"in": "query",
+						"description": "customerIdMagento",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": true
+			}
+		},
+		"/api/v1/client/{codeClient}": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getClient",
+				"operationId": "getClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "codeSociete",
+						"in": "query",
+						"description": "codeSociete",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ClientDto"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			},
+			"put": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "modifierClient",
+				"operationId": "modifierClientUsingPUT",
+				"consumes": [
+					"application/json;charset=UTF-8"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "client",
+						"description": "client",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/ClientDto"
+						}
+					},
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "codeSociete",
+						"in": "query",
+						"description": "codeSociete",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ClientDto"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/atc": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getAtcByCodeClient",
+				"operationId": "getAtcByCodeClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첔tcDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/bon-de-livraison": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getBonsLivraisonByCodeClient",
+				"operationId": "getBonsLivraisonByCodeClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "dateDebut",
+						"in": "query",
+						"description": "dateDebut",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "dateFin",
+						"in": "query",
+						"description": "dateFin",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "extensionBon",
+						"in": "query",
+						"description": "extensionBon",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "idChantier",
+						"in": "query",
+						"description": "idChantier",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "numeroBon",
+						"in": "query",
+						"description": "numeroBon",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/BonLivraisonDto"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/chantier": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getChantiersClient",
+				"operationId": "getChantiersClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "afficherChantiersEchus",
+						"in": "query",
+						"description": "afficherChantiersEchus",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Iterable첖hantierDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/commande-client": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getCommandesClient",
+				"operationId": "getCommandesClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "codeSociete",
+						"in": "query",
+						"description": "codeSociete",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "dateDebut",
+						"in": "query",
+						"description": "dateDebut",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "dateFin",
+						"in": "query",
+						"description": "dateFin",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ListeCommandeClientDto"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			},
+			"post": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "creerCommandeClient",
+				"operationId": "creerCommandeClientUsingPOST",
+				"consumes": [
+					"application/json;charset=UTF-8"
+				],
+				"produces": [
+					"application/json;charset=UTF-8"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "commandeMagento",
+						"description": "commandeMagento",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CommandeMagentoDto"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Created",
+						"schema": {
+							"$ref": "#/definitions/CommandeClientDto"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/devis": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getDevisByCodeClient",
+				"operationId": "getDevisByCodeClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "dateDebut",
+						"in": "query",
+						"description": "dateDebut",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "dateFin",
+						"in": "query",
+						"description": "dateFin",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "extensionBon",
+						"in": "query",
+						"description": "extensionBon",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "idChantier",
+						"in": "query",
+						"description": "idChantier",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "numeroBon",
+						"in": "query",
+						"description": "numeroBon",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/DevisDto"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/encours": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getEncoursClient",
+				"operationId": "getEncoursClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첚ncoursClientDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/encours/verifier": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "verifierEncoursClient",
+				"operationId": "verifierEncoursClientUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"name": "montantCommandeTTC",
+						"in": "query",
+						"description": "montantCommandeTTC",
+						"required": true,
+						"type": "number",
+						"format": "float"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첚ncoursClientVerifierDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/facture": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getFactures",
+				"operationId": "getFacturesUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "dateDebut",
+						"in": "query",
+						"description": "dateDebut",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "dateFin",
+						"in": "query",
+						"description": "dateFin",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					},
+					{
+						"name": "idChantier",
+						"in": "query",
+						"description": "idChantier",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "numeroFacture",
+						"in": "query",
+						"description": "numeroFacture",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/FactureDto"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/client/{codeClient}/litige": {
+			"get": {
+				"tags": [
+					"client-controller"
+				],
+				"summary": "getLitige",
+				"operationId": "getLitigeUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "codeClient",
+						"in": "path",
+						"description": "codeClient",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첣itigeClientDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/customer/{idCustomer}": {
+			"get": {
+				"tags": [
+					"customer-controller"
+				],
+				"summary": "getCustomer",
+				"operationId": "getCustomerUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "idCustomer",
+						"in": "path",
+						"description": "idCustomer",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첖ustomerDetail�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/edition/bon-de-livraison/{idBon}": {
+			"get": {
+				"tags": [
+					"edition-controller"
+				],
+				"summary": "getBonDeLivrasion",
+				"operationId": "getBonDeLivrasionUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "idBon",
+						"in": "path",
+						"description": "idBon",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string",
+							"format": "byte"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/edition/commande": {
+			"get": {
+				"tags": [
+					"edition-controller"
+				],
+				"summary": "getCommande",
+				"operationId": "getCommandeUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "extensionBon",
+						"in": "query",
+						"description": "extensionBon",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "idFicheSociete",
+						"in": "query",
+						"description": "idFicheSociete",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"name": "numeroBon",
+						"in": "query",
+						"description": "numeroBon",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string",
+							"format": "byte"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/edition/devis/{idBon}": {
+			"get": {
+				"tags": [
+					"edition-controller"
+				],
+				"summary": "getDevis",
+				"operationId": "getDevisUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "idBon",
+						"in": "path",
+						"description": "idBon",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string",
+							"format": "byte"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/edition/facture-au-comptant/{idBon}": {
+			"get": {
+				"tags": [
+					"edition-controller"
+				],
+				"summary": "getFactureComptant",
+				"operationId": "getFactureComptantUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "idBon",
+						"in": "path",
+						"description": "idBon",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string",
+							"format": "byte"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/edition/facture-terme/{idFactureTerme}": {
+			"get": {
+				"tags": [
+					"edition-controller"
+				],
+				"summary": "getFactureTerme",
+				"operationId": "getFactureTermeUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "idFactureTerme",
+						"in": "path",
+						"description": "idFactureTerme",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string",
+							"format": "byte"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/produit/tarif": {
+			"get": {
+				"tags": [
+					"produit-controller"
+				],
+				"summary": "getPrixMultiple",
+				"operationId": "getPrixMultipleUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "codeClient",
+						"in": "query",
+						"description": "codeClient",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "codeProduit",
+						"in": "query",
+						"description": "codeProduit",
+						"required": true,
+						"type": "array",
+						"items": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"collectionFormat": "multi"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PrixProduitDto"
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/produit/{codeProduit}/stock": {
+			"get": {
+				"tags": [
+					"produit-controller"
+				],
+				"summary": "getStock",
+				"operationId": "getStockUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "codeProduit",
+						"in": "path",
+						"description": "codeProduit",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첯tockProduitDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/v1/produit/{codeProduit}/tarif": {
+			"get": {
+				"tags": [
+					"produit-controller"
+				],
+				"summary": "getPrix",
+				"operationId": "getPrixUsingGET",
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "codeAgence",
+						"in": "query",
+						"description": "codeAgence",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "codeClient",
+						"in": "query",
+						"description": "codeClient",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "codeProduit",
+						"in": "path",
+						"description": "codeProduit",
+						"required": true,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Optional첧rixProduitDto�"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/error": {
+			"get": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingGET",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			},
+			"head": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingHEAD",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				},
+				"deprecated": false
+			},
+			"post": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			},
+			"put": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingPUT",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			},
+			"delete": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingDELETE",
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				},
+				"deprecated": false
+			},
+			"options": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingOPTIONS",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				},
+				"deprecated": false
+			},
+			"patch": {
+				"tags": [
+					"basic-error-controller"
+				],
+				"summary": "errorHtml",
+				"operationId": "errorHtmlUsingPATCH",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"text/html"
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ModelAndView"
+						}
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					}
+				},
+				"deprecated": false
+			}
+		}
+	},
+	"definitions": {
+		"Address": {
+			"type": "object",
+			"properties": {
+				"city": {
+					"type": "string"
+				},
+				"country_id": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"firstname": {
+					"type": "string"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"lastname": {
+					"type": "string"
+				},
+				"postcode": {
+					"type": "string"
+				},
+				"region": {
+					"type": "string"
+				},
+				"region_code": {
+					"type": "string"
+				},
+				"region_id": {
+					"type": "string"
+				},
+				"same_as_billing": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"save_in_address_book": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"street": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"telephone": {
+					"type": "string"
+				}
+			},
+			"title": "Address"
+		},
+		"Adresse": {
+			"type": "object",
+			"properties": {
+				"adressePostale": {
+					"$ref": "#/definitions/AdressePostale"
+				},
+				"bpLocaliteLieudit": {
+					"type": "string"
+				},
+				"codePostal": {
+					"type": "string"
+				},
+				"complementAdresse1": {
+					"type": "string"
+				},
+				"complementAdresse2": {
+					"type": "string"
+				},
+				"etatControleQAS": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"idPays": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idTypeVoie": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"nomVoie": {
+					"type": "string"
+				},
+				"numeroVoie": {
+					"type": "string"
+				},
+				"ville": {
+					"type": "string"
+				}
+			},
+			"title": "Adresse"
+		},
+		"AdressePostale": {
+			"type": "object",
+			"properties": {
+				"ligne1": {
+					"type": "string"
+				},
+				"ligne2": {
+					"type": "string"
+				},
+				"ligne3": {
+					"type": "string"
+				},
+				"ligne4": {
+					"type": "string"
+				},
+				"ligne5": {
+					"type": "string"
+				},
+				"ligne6": {
+					"type": "string"
+				}
+			},
+			"title": "AdressePostale"
+		},
+		"AtcDto": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"matricule": {
+					"type": "string"
+				},
+				"mobile": {
+					"type": "string"
+				},
+				"nomFamille": {
+					"type": "string"
+				},
+				"prenom": {
+					"type": "string"
+				},
+				"telephone": {
+					"type": "string"
+				},
+				"telephonePrefere": {
+					"type": "string"
+				}
+			},
+			"title": "AtcDto"
+		},
+		"BonLivraisonDto": {
+			"type": "object",
+			"properties": {
+				"agence": {
+					"type": "string"
+				},
+				"dateCreation": {
+					"type": "string",
+					"example": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+				},
+				"extensionBon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"idBon": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idChantier": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"libelleChantier": {
+					"type": "string"
+				},
+				"lienEditionPdf": {
+					"type": "string"
+				},
+				"numeroBon": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"referenceBonDeCommande": {
+					"type": "string"
+				}
+			},
+			"title": "BonLivraisonDto"
+		},
+		"ChantierDto": {
+			"type": "object",
+			"properties": {
+				"codePostal": {
+					"type": "string"
+				},
+				"dateDebut": {
+					"type": "string",
+					"example": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+				},
+				"dateFin": {
+					"type": "string",
+					"example": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"libelleChantier": {
+					"type": "string"
+				},
+				"ville": {
+					"type": "string"
+				}
+			},
+			"title": "ChantierDto"
+		},
+		"ClientDto": {
+			"type": "object",
+			"properties": {
+				"chantierObligatoire": {
+					"type": "boolean"
+				},
+				"codeAgencePilote": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"codeClient": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"codePostal": {
+					"type": "string"
+				},
+				"codeProfession": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"codeTaille": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"consentementPromoEmail": {
+					"type": "boolean"
+				},
+				"consentementPromoSMS": {
+					"type": "boolean"
+				},
+				"consentementRGPD": {
+					"type": "boolean"
+				},
+				"email": {
+					"type": "string"
+				},
+				"emailSociete": {
+					"type": "string"
+				},
+				"idCivilite": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idPays": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idTypeClient": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idTypeVoie": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"nom": {
+					"type": "string"
+				},
+				"nomResponsable": {
+					"type": "string"
+				},
+				"nomVoie": {
+					"type": "string"
+				},
+				"numeroSiren": {
+					"type": "string"
+				},
+				"numeroVoie": {
+					"type": "string"
+				},
+				"prenom": {
+					"type": "string"
+				},
+				"prenomResponsable": {
+					"type": "string"
+				},
+				"raisonSociale": {
+					"type": "string"
+				},
+				"referenceBonCmdObligatoire": {
+					"type": "boolean"
+				},
+				"telephoneFixe": {
+					"type": "string"
+				},
+				"telephonePortable": {
+					"type": "string"
+				},
+				"typeClient": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"ville": {
+					"type": "string"
+				}
+			},
+			"title": "ClientDto"
+		},
+		"CommandeClientDto": {
+			"type": "object",
+			"properties": {
+				"codeAgence": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"dateCreation": {
+					"type": "string",
+					"example": "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+				},
+				"estCommandeClient": {
+					"type": "boolean"
+				},
+				"estWeb": {
+					"type": "boolean"
+				},
+				"extensionBon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"idChantier": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idSource": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idTypeBon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"libelleChantier": {
+					"type": "string"
+				},
+				"montantHT": {
+					"type": "number",
+					"format": "float"
+				},
+				"montantTTC": {
+					"type": "number",
+					"format": "float"
+				},
+				"nomAgence": {
+					"type": "string"
+				},
+				"numeroBon": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"source": {
+					"type": "string"
+				},
+				"urlEditionPdf": {
+					"type": "string"
+				}
+			},
+			"title": "CommandeClientDto"
+		},
+		"CommandeMagentoDto": {
+			"type": "object",
+			"properties": {
+				"idChantier": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idCommandeMagento": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"ligneCommandeMagentoList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/LigneCommandeMagentoDto"
+					}
+				},
+				"montantFraisLivraison": {
+					"type": "number",
+					"format": "float"
+				},
+				"referenceCommande": {
+					"type": "string"
+				},
+				"transport": {
+					"$ref": "#/definitions/TransportDto"
+				}
+			},
+			"title": "CommandeMagentoDto"
+		},
+		"Currency": {
+			"type": "object",
+			"properties": {
+				"base_currency_code": {
+					"type": "string"
+				},
+				"base_to_global_rate": {
+					"type": "number",
+					"format": "double"
+				},
+				"base_to_quote_rate": {
+					"type": "number",
+					"format": "double"
+				},
+				"global_currency_code": {
+					"type": "string"
+				},
+				"quote_currency_code": {
+					"type": "string"
+				},
+				"store_currency_code": {
+					"type": "string"
+				},
+				"store_to_base_rate": {
+					"type": "number",
+					"format": "double"
+				},
+				"store_to_quote_rate": {
+					"type": "number",
+					"format": "double"
+				}
+			},
+			"title": "Currency"
+		},
+		"CustomerCustomAttributes": {
+			"type": "object",
+			"properties": {
+				"attribute_code": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"title": "CustomerCustomAttributes"
+		},
+		"CustomerDetail": {
+			"type": "object",
+			"properties": {
+				"addresses": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Address"
+					}
+				},
+				"billing_address": {
+					"$ref": "#/definitions/Address"
+				},
+				"civilite": {
+					"type": "string"
+				},
+				"codeAgence": {
+					"type": "string"
+				},
+				"codeClient": {
+					"type": "string"
+				},
+				"codeSociete": {
+					"type": "string"
+				},
+				"codeStatutJuridique": {
+					"type": "string"
+				},
+				"created_at": {
+					"type": "string"
+				},
+				"created_in": {
+					"type": "string"
+				},
+				"currency": {
+					"$ref": "#/definitions/Currency"
+				},
+				"custom_attributes": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/CustomerCustomAttributes"
+					}
+				},
+				"customer_is_guest": {
+					"type": "boolean"
+				},
+				"customer_note_notify": {
+					"type": "boolean"
+				},
+				"customer_tax_class_id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"default_billing": {
+					"type": "string"
+				},
+				"default_shipping": {
+					"type": "string"
+				},
+				"disable_auto_group_change": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"dob": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"extension_attributes": {
+					"type": "object"
+				},
+				"firstname": {
+					"type": "string"
+				},
+				"gender": {
+					"type": "string"
+				},
+				"group_id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"lastname": {
+					"type": "string"
+				},
+				"middlename": {
+					"type": "string"
+				},
+				"nomResponsable": {
+					"type": "string"
+				},
+				"orig_order_id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"prefix": {
+					"type": "string"
+				},
+				"profession": {
+					"type": "string"
+				},
+				"siren": {
+					"type": "string"
+				},
+				"siret": {
+					"type": "string"
+				},
+				"store_id": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"suffix": {
+					"type": "string"
+				},
+				"taille": {
+					"type": "string"
+				},
+				"taxvat": {
+					"type": "string"
+				},
+				"telFixe": {
+					"type": "string"
+				},
+				"updated_at": {
+					"type": "string"
+				},
+				"website_id": {
+					"type": "integer",
+					"format": "int64"
+				}
+			},
+			"title": "CustomerDetail"
+		},
+		"DevisDto": {
+			"type": "object",
+			"properties": {
+				"agence": {
+					"type": "string"
+				},
+				"dateCreation": {
+					"type": "string",
+					"example": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+				},
+				"extensionBon": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"idBon": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"idChantier": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"libelleChantier": {
+					"type": "string"
+				},
+				"lienEditionPdf": {
+					"type": "string"
+				},
+				"numeroBon": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"referenceBonDeCommande": {
+					"type": "string"
+				}
+			},
+			"title": "DevisDto"
+		},
+		"EncoursClientDto": {
+			"type": "object",
+			"properties": {
+				"codeClient": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"codeSociete": {
+					"type": "string"
+				},
+				"encoursActuelSociete": {
+					"type": "number",
+					"format": "double"
+				},
+				"encoursActuelSocieteFacture": {
+					"type": "number",
+					"format": "double"
+				},
+				"encoursActuelSocieteNonFacture": {
+					"type": "number",
+					"format": "double"
+				}
+			},
+			"title": "EncoursClientDto"
+		},
+		"EncoursClientVerifierDto": {
+			"type": "object",
+			"properties": {
+				"codeClient": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"codeSociete": {
+					"type": "string"
+				},
+				"commandePossible": {
+					"type": "boolean"
+				}
+			},
+			"title": "EncoursClientVerifierDto"
+		},
+		"FactureDto": {
+			"type": "object",
+			"properties": {
+				"agence": {
+					"type": "string"
+				},
+				"dateCreation": {
+					"type": "string",
+					"example": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+				},
+				"idChantier": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"libelleChantier": {
+					"type": "string"
+				},
+				"lienEditionPdf": {
+					"type": "string"
+				},
+				"modeReglement": {
+					"type": "string"
+				},
+				"montantTotalHT": {
+					"type": "number",
+					"format": "float"
+				},
+				"montantTotalTTC": {
+					"type": "number",
+					"format": "float"
+				},
+				"numeroFacture": {
+					"type": "string"
+				},
+				"referenceBonDeCommande": {
+					"type": "string"
+				}
+			},
+			"title": "FactureDto"
+		},
+		"Iterable첖hantierDto�": {
+			"type": "object",
+			"title": "Iterable첖hantierDto�"
+		},
+		"LigneCommandeMagentoDto": {
+			"type": "object",
+			"properties": {
+				"codeProduit": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"prix": {
+					"type": "number",
+					"format": "float"
+				},
+				"quantite": {
+					"type": "number",
+					"format": "float"
+				}
+			},
+			"title": "LigneCommandeMagentoDto"
+		},
+		"Link": {
+			"type": "object",
+			"properties": {
+				"href": {
+					"type": "string"
+				},
+				"templated": {
+					"type": "boolean"
+				}
+			},
+			"title": "Link"
+		},
+		"ListeCommandeClientDto": {
+			"type": "object",
+			"properties": {
+				"bons": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/CommandeClientDto"
+					}
+				},
+				"commandeClient": {
+					"$ref": "#/definitions/CommandeClientDto"
+				}
+			},
+			"title": "ListeCommandeClientDto"
+		},
+		"LitigeClientDto": {
+			"type": "object",
+			"properties": {
+				"codeAgence": {
+					"type": "string"
+				},
+				"codeClient": {
+					"type": "string"
+				},
+				"codeSociete": {
+					"type": "string"
+				},
+				"litige": {
+					"type": "boolean"
+				}
+			},
+			"title": "LitigeClientDto"
+		},
+		"Map쳒tring,Link�": {
+			"type": "object",
+			"title": "Map쳒tring,Link�",
+			"additionalProperties": {
+				"$ref": "#/definitions/Link"
+			}
+		},
+		"ModelAndView": {
+			"type": "object",
+			"properties": {
+				"empty": {
+					"type": "boolean"
+				},
+				"model": {
+					"type": "object"
+				},
+				"modelMap": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "object"
+					}
+				},
+				"reference": {
+					"type": "boolean"
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"100",
+						"101",
+						"102",
+						"103",
+						"200",
+						"201",
+						"202",
+						"203",
+						"204",
+						"205",
+						"206",
+						"207",
+						"208",
+						"226",
+						"300",
+						"301",
+						"302",
+						"303",
+						"304",
+						"305",
+						"307",
+						"308",
+						"400",
+						"401",
+						"402",
+						"403",
+						"404",
+						"405",
+						"406",
+						"407",
+						"408",
+						"409",
+						"410",
+						"411",
+						"412",
+						"413",
+						"414",
+						"415",
+						"416",
+						"417",
+						"418",
+						"419",
+						"420",
+						"421",
+						"422",
+						"423",
+						"424",
+						"426",
+						"428",
+						"429",
+						"431",
+						"451",
+						"500",
+						"501",
+						"502",
+						"503",
+						"504",
+						"505",
+						"506",
+						"507",
+						"508",
+						"509",
+						"510",
+						"511"
+					]
+				},
+				"view": {
+					"$ref": "#/definitions/View"
+				},
+				"viewName": {
+					"type": "string"
+				}
+			},
+			"title": "ModelAndView"
+		},
+		"Optional첔tcDto�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첔tcDto�"
+		},
+		"Optional첖ustomerDetail�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첖ustomerDetail�"
+		},
+		"Optional첚ncoursClientDto�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첚ncoursClientDto�"
+		},
+		"Optional첚ncoursClientVerifierDto�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첚ncoursClientVerifierDto�"
+		},
+		"Optional첣itigeClientDto�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첣itigeClientDto�"
+		},
+		"Optional첧rixProduitDto�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첧rixProduitDto�"
+		},
+		"Optional첯tockProduitDto�": {
+			"type": "object",
+			"properties": {
+				"present": {
+					"type": "boolean"
+				}
+			},
+			"title": "Optional첯tockProduitDto�"
+		},
+		"PrixProduitDto": {
+			"type": "object",
+			"properties": {
+				"codeProduit": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"nbUFparUS": {
+					"type": "number",
+					"format": "float"
+				},
+				"prix": {
+					"type": "number",
+					"format": "double"
+				},
+				"prixHorsPromo": {
+					"type": "number",
+					"format": "double"
+				},
+				"prixPublic": {
+					"type": "number",
+					"format": "double"
+				},
+				"symboleUniteFacturation": {
+					"type": "string"
+				}
+			},
+			"title": "PrixProduitDto"
+		},
+		"Region": {
+			"type": "object",
+			"properties": {
+				"region": {
+					"type": "string"
+				},
+				"region_code": {
+					"type": "string"
+				},
+				"region_id": {
+					"type": "integer",
+					"format": "int64"
+				}
+			},
+			"title": "Region"
+		},
+		"StockParams": {
+			"type": "object",
+			"properties": {
+				"produits": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/StockParamsLigne"
+					}
+				}
+			},
+			"title": "StockParams"
+		},
+		"StockParamsLigne": {
+			"type": "object",
+			"properties": {
+				"codeProduit": {
+					"type": "integer",
+					"format": "int64"
+				}
+			},
+			"title": "StockParamsLigne"
+		},
+		"StockProduitDto": {
+			"type": "object",
+			"properties": {
+				"codeAgence": {
+					"type": "string"
+				},
+				"codeAgencePrincipaleSociete": {
+					"type": "string"
+				},
+				"codeProduit": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"estAgencePrincipaleSociete": {
+					"type": "boolean"
+				},
+				"quantiteCommandeFournisseur": {
+					"type": "number",
+					"format": "float"
+				},
+				"stockAgence": {
+					"type": "number",
+					"format": "float"
+				},
+				"stockAgencePrincipaleSociete": {
+					"type": "number",
+					"format": "float"
+				}
+			},
+			"title": "StockProduitDto"
+		},
+		"StockProduitLightDto": {
+			"type": "object",
+			"properties": {
+				"codeProduit": {
+					"type": "integer",
+					"format": "int64"
+				},
+				"stockAgence": {
+					"type": "number",
+					"format": "float"
+				}
+			},
+			"title": "StockProduitLightDto"
+		},
+		"TransportDto": {
+			"type": "object",
+			"properties": {
+				"adresse": {
+					"$ref": "#/definitions/Adresse"
+				},
+				"contact": {
+					"type": "string"
+				},
+				"dateLivraison": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"modeLivraison": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"plageHoraire": {
+					"type": "string"
+				},
+				"telephone": {
+					"type": "string"
+				}
+			},
+			"title": "TransportDto"
+		},
+		"View": {
+			"type": "object",
+			"properties": {
+				"contentType": {
+					"type": "string"
+				}
+			},
+			"title": "View"
+		}
+	}
+}

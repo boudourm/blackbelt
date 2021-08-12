@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>CR005 Synthèse - Architecture et contraintes techniques. - BlackBelt</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CR005 Synth\u00e8se - Architecture et contraintes techniques.";
+    var mkdocs_page_input_path = "res\\CR005.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BlackBelt</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR001/">CR001 Premier point avec Thomas CAIATI</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR002/">CR002 Présentation de Mauris bois par Jérôme TALIS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR003/">CR003 Dernier point de Juin avec Thomas CAIATI</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR004/">CR004 Démarrage de T2A avec Thomas CAIATI</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">CR005 Synthèse - Architecture et contraintes techniques.</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#cr005-synthese-architecture-et-contraintes-techniques">CR005 Synthèse : Architecture et contraintes techniques.</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BlackBelt</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>CR005 Synthèse - Architecture et contraintes techniques.</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cr005-synthese-architecture-et-contraintes-techniques">CR005 Synthèse : Architecture et contraintes techniques.</h1>
+<p><strong>Date :</strong> 20-07-2020  </p>
+<table>
+<thead>
+<tr>
+<th><strong>Attention :</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Les spécifications énoncées sont admisent jusqu'à redéfinition dans les prochains comptes rendus.</em></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>L’approche de test des APIs REST entreprise doit couvrir certains points essentiels à la qualité d’une API.</li>
+<li>Input validation, tester l’API avec différents paramètres d’entrée et vérifier la réponse, l’API doit retourner un code HTTP 200 pour des paramètres valides et 400 pour des paramètres invalides.</li>
+<li>JSON format validation, vérifier que le JSON renvoyé par l’API est correctement structuré.</li>
+<li>Business Logic, il faudrait pouvoir vérifier que l’API respecte la logique métier qu’elle est sensée implémenter.</li>
+<li>Negative test cases, il faut tester l’API sur des paramètres invalides/null, des valeurs obligatoires manquantes/null, des formats de valeurs inattendus, un montant déraisonnablement important de payload data comme des caractères non-ASCII des strings et entiers trop longs. Vérifier si les exceptions sont bien gérées.</li>
+<li>Reliability tests - vérifier si l’API retourne constamment des réponses correctes ou est-ce-que des échecs arrivent souvent.</li>
+<li>Tests de sécurité, tester si les utilisateurs non autorisés peuvent accéder commeme aux fonctionnalité de l’API.</li>
+<li>Tests de cohérence/synchronisation, est-ce-que les données retournées changent si la base de données subit un changement d’état.</li>
+<li>L’api-docs de Swagger est un JSON contenant toutes les informations concernant les Endpoints de l’API à tester.</li>
+<li>BlackBelt prend en entrée l’api-docs de swagger, filtrer ce document de toute donnée inutilisable.</li>
+<li>Les Endpoints ainsi extraits permettront  de disperser les données de chaque Endpoint individuellement.</li>
+<li>Chaque Endpoint sera traité avec une approche de test dite Black-Box Testing des Restful API, càd que BlackBelt pourra générer des cas de tests sans connaître les détails internes de l’API.</li>
+<li>Chaque Black-Box testing de Endpoint générera un fichier .feature <a href="https://github.com/intuit/karate">Karaté</a> contenant les cas de tests suivants les points essentiels traités plus haut.</li>
+<li>BlackBelt doit pouvoir être appelé manuellement par les développeurs, cela se fera sous forme d’application java.</li>
+<li>BlackBelt devra aussi permettre de proposer sur la <a href="https://springfox.github.io/springfox/docs/current/">SpringFox</a> UI des Endpoints de génération de tests accessibles aux Product Owner.</li>
+<li>Pour cela il est nécessaire de  customiser Swagger UI de <a href="https://springfox.github.io/springfox/docs/current/">SpringFox</a> afin que des Endpoints de générations de tests BlackBelt soient visibles.</li>
+<li>La conception du projet se fera en UML.</li>
+<li>Le développement de la solution en Java.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../CR004/" class="btn btn-neutral" title="CR004 Démarrage de T2A avec Thomas CAIATI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../CR004/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

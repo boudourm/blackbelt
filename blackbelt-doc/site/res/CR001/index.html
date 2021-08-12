@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>CR001 Premier point avec Thomas CAIATI - BlackBelt</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CR001 Premier point avec Thomas CAIATI";
+    var mkdocs_page_input_path = "res\\CR001.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BlackBelt</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">CR001 Premier point avec Thomas CAIATI</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#cr001-premier-point-avec-thomas-caiati">CR001 Premier point avec Thomas CAIATI</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR002/">CR002 Présentation de Mauris bois par Jérôme TALIS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR003/">CR003 Dernier point de Juin avec Thomas CAIATI</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR004/">CR004 Démarrage de T2A avec Thomas CAIATI</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../CR005/">CR005 Synthèse - Architecture et contraintes techniques.</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BlackBelt</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>CR001 Premier point avec Thomas CAIATI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cr001-premier-point-avec-thomas-caiati">CR001 Premier point avec Thomas CAIATI</h1>
+<p><strong>Date :</strong> 08-06-2020<br />
+<strong>Type :</strong> Réunion<br />
+<strong>Lieu :</strong> Pitet, SAMSE Groupe Headquarters, Echirolles<br />
+<strong>Organisateur :</strong> Thomas CAIATI (Ingénieur Informatique à la SAMSE)<br />
+<strong>Rapporteur :</strong> Mehdi BOUDOUR (Étudiant en Master MIAGE à IM2AG)<br />
+<strong>Présents :</strong> Thomas CAIATI, Mehdi BOUDOUR  </p>
+<table>
+<thead>
+<tr>
+<th><strong>Attention :</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Les spécifications énoncées sont admisent jusqu'à redéfinition dans les prochains comptes rendus.</em></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Le projet est nommé BlackBelt.</li>
+<li>Actuellement les API REST sont testés à l’aide de <a href="https://github.com/intuit/karate">Karaté</a> (fork de Cucumber pour API REST) et ils sont appelés par Jenkins.</li>
+<li>D’autres solutions de tests sont à étudier.</li>
+<li>Le but est de générer automatiquement les tests (par introspection Java et/ou lecture du JSON du Swagger) pour <a href="https://github.com/intuit/karate">Karaté</a> ou autre.</li>
+<li>Etudier la possibilité d'appeler ces tests au démarrage des applicatifs</li>
+<li>Les tests automatiquement générés doivent impérativement être modifiables manuellement.</li>
+<li>Les tests automatiquement générés doivent reproduire le travail des tests actuellement écrits manuellement par l’équipe sem (Système e-commerce et Mobile).</li>
+<li>D’autres solutions doivent être étudiées pour la génération des tests automatiques.</li>
+<li>Le client final de l’application est le Product Owners de Sem (actuellement Jérôme TALIS).</li>
+<li>Un point est prévu avec le client dans les semaines qui suivent.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../CR002/" class="btn btn-neutral float-right" title="CR002 Présentation de Mauris bois par Jérôme TALIS">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../CR002/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

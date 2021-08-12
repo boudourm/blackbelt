@@ -1,0 +1,9 @@
+site_name: BlackBelt
+nav:
+    - CR001 Premier point avec Thomas CAIATI : res/CR001.md
+    - CR002 Présentation de Mauris bois par Jérôme TALIS : res/CR002.md
+    - CR003 Dernier point de Juin avec Thomas CAIATI : res/CR003.md
+    - CR004 Démarrage de T2A avec Thomas CAIATI : res/CR004.md
+    - CR005 Synthèse - Architecture et contraintes techniques. : res/CR005.md
+    
+theme: readthedocs
